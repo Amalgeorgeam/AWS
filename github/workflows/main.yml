@@ -1,24 +1,11 @@
-name: CI Pipeline
+FROM python:3.10-slim
 
-on:
-  push:
-    branches: [ "main" ]
+WORKDIR /app
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+COPY . .
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+CMD ["python", "app.py"]
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
-
-    - name: Run tests
-      run: pytest
