@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trading Bot Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Welcome to Auto Trading Bot</h1>
+    <button onclick="startBot()">Start Bot</button>
+    <p id="status"></p>
+
+    <script>
+        function startBot() {
+            fetch("/run-bot", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action: "start" })
+            }).then(res => res.json()).then(data => {
+                document.getElementById("status").textContent = "Bot Status: " + data.status;
+            });
+        }
+    </script>
+</body>
+</html>
