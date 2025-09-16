@@ -1,5 +1,0 @@
-flask
-openai
-smartapi-python
-logzero
-websocket-client

@@ -1,3 +1,0 @@
-# GPT-Based Options Auto Trader Setup
-
-Instructions will go here...
